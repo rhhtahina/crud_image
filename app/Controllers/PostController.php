@@ -10,4 +10,11 @@ class PostController extends BaseController
     {
         return view('index');
     }
+
+    // handle add new post ajax request
+
+    public function add() {
+        print_r($_POST);
+        print_r($_FILES);
+    }
 }

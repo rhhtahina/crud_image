@@ -43,7 +43,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Add Post</button>
+                        <button type="submit" class="btn btn-primary" id="add_post_btn">Add Post</button>
                     </div>
                 </form>
             </div>
@@ -105,7 +105,33 @@
     <script src="<?= base_url() ?>assets/js/jquery-3.7.1.min.js"></script>
     <script src="<?= base_url() ?>assets/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
     <script src="<?= base_url() ?>assets/js/sweetalert2@11.js"></script>
-    <script></script>
+    <script>
+    $(document).ready(function() {
+        // add new post ajax request
+        $("#add_post_form").submit(function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+
+            if (!this.checkValidity()) {
+                e.preventDefault();
+                $(this).addClass('was-validated');
+            } else {
+                $("#add_post_btn").text("Adding...");
+                $.ajax({
+                    type: "post",
+                    url: "<?= base_url('post/add') ?>",
+                    data: formData,
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function(response) {
+                        console.log(response);
+                    }
+                });
+            }
+        });
+    });
+    </script>
 </body>
 
 </html>
