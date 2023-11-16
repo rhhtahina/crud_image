@@ -37,7 +37,7 @@
                         </div>
                         <div class="mb-3">
                             <label>Post Image</label>
-                            <input type="file" name="image" id="image" class="form-control" required>
+                            <input type="file" name="file" id="image" class="form-control" required>
                             <div class="invalid-feedback">Post image is required!</div>
                         </div>
                     </div>
@@ -124,8 +124,25 @@
                     contentType: false,
                     cache: false,
                     processData: false,
+                    dataType: 'json',
                     success: function(response) {
-                        console.log(response);
+                        if (response.error) {
+                            $("#image").addClass('is-invalid');
+                            $("#image").next().text(response.message.image);
+                        } else {
+                            $("#add_post_modal").modal('hide');
+                            $("#add_post_form")[0].reset();
+
+                            $("#image").removeClass('is-invalid');
+                            $("#image").next().text('');
+                            $("#add_post_form").removeClass('was-validated');
+                            Swal.fire(
+                                'Added',
+                                response.message,
+                                'success'
+                            );
+                        }
+                        $("#add_post_btn").text("Add Post");
                     }
                 });
             }

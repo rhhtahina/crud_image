@@ -6,13 +6,14 @@ use CodeIgniter\Model;
 
 class PostModel extends Model
 {
+    protected $DBGroup          = 'default';
     protected $table            = 'posts';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['title', 'category', 'body', 'image', 'created_at'];
 
     // Dates
     protected $useTimestamps = false;
