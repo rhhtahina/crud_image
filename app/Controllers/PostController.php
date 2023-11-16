@@ -45,4 +45,13 @@ class PostController extends BaseController
             ]);
         }
     }
+
+    // handle fetch all posts ajax request
+    public function fetch() {
+        $postModel = new \App\Models\PostModel();
+        $posts = $postModel->findAll();
+        $data = '';
+
+        if ($posts) {}
+    }
 }

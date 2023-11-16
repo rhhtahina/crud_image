@@ -64,36 +64,7 @@
                     </div>
                     <div class="card-body">
                         <div class="row" id="show_posts">
-                            <div class="col-md-4">
-                                <div class="card shadow-sm">
-                                    <a href="#"><img
-                                            src="https://www.lifewire.com/thmb/T7a6QlzUPEpua3OKx7V_pCvBY14=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/forest-wallpaper-af78609605b14f7c9b999d8b2f49c0d9.jpg"
-                                            class="img-gluid card-img-top"></a>
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="card-title fs-5 fw-bold">Post Title</div>
-                                            <div class="badge bg-dark">Category</div>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                        </p>
-                                    </div>
-                                    <div class="card-footer d-flex justify-content-between align-items-center">
-                                        <div class="fst-italic">
-                                            21-12-2021
-                                        </div>
-                                        <div>
-                                            <a href="#" class="btn btn-success btn-sm">Edit</a>
-                                            <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <h1 class="text-center text-secondary my-5">Posts Loading...</h1>
                         </div>
                     </div>
                 </div>
@@ -147,6 +118,19 @@
                 });
             }
         });
+
+        // fetch all posts ajax request
+        fetchAllPosts();
+
+        function fetchAllPosts() {
+            $.ajax({
+                type: "get",
+                url: "<?= base_url('post/fetch') ?>",
+                success: function(response) {
+                    console.log(response);
+                }
+            });
+        }
     });
     </script>
 </body>
