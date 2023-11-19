@@ -112,6 +112,7 @@
                                 response.message,
                                 'success'
                             );
+                            fetchAllPosts();
                         }
                         $("#add_post_btn").text("Add Post");
                     }
@@ -127,7 +128,7 @@
                 type: "get",
                 url: "<?= base_url('post/fetch') ?>",
                 success: function(response) {
-                    console.log(response);
+                    $("#show_posts").html(response.message);
                 }
             });
         }
