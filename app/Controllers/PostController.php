@@ -69,7 +69,7 @@ class PostController extends BaseController
                         <div class="card-footer d-flex justify-content-between align-items-center">
                             <div class="fst-italic">'.date('d F Y', strtotime($post['created_at'])).'</div>
                             <div>
-                                <a href="#" id="'.$post['id'].'" class="btn btn-success btn-sm post_edit_btn">Edit</a>
+                                <a href="#" id="'.$post['id'].'" data-bs-toggle="modal" data-bs-target="#edit_post_modal" class="btn btn-success btn-sm post_edit_btn">Edit</a>
                                 <a href="#" id="'.$post['id'].'" class="btn btn-danger btn-sm post_delete_btn">Delete</a>
                             </div>
                         </div>
