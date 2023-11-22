@@ -87,4 +87,14 @@ class PostController extends BaseController
             ]);
         }
     }
+
+    // handle edit post ajax request
+    public function edit($id = null) {
+        $postModel = new \App\Models\PostModel();
+        $post = $postModel->find($id);
+        return $this->response->setJSON([
+            'error' => false,
+            'message' => $post
+        ]);
+    }
 }

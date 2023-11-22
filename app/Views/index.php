@@ -168,6 +168,25 @@
             }
         });
 
+        // edit post ajax request
+        $(document).delegate('.post_edit_btn', 'click', function(e) {
+            e.preventDefault();
+            const id = $(this).attr('id');
+            $.ajax({
+                type: "get",
+                url: "<?= base_url('post/edit') ?>/" + id,
+                success: function(response) {
+                    $("#pid").val(response.message.id);
+                    $("#old_image").val(response.message.image);
+                    $("#title").val(response.message.title);
+                    $("#category").val(response.message.category);
+                    $("#body").val(response.message.body);
+                    $("#post_image").html('<img src="<?= base_url('uploads/avatar') ?>/' +
+                        response.message.image + '" class="img-fluid" width="150">')
+                }
+            });
+        });
+
         // fetch all posts ajax request
         fetchAllPosts();
 
